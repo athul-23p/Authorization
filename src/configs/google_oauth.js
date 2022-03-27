@@ -37,7 +37,7 @@ passport.use(
           return cb(error,null);
         //   return res.status(500).send(error);
       }
-    //   console.log(profile._json.email);
+   
     }
   )
 );

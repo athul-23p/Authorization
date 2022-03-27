@@ -21,11 +21,9 @@ app.get(
     session: false,
   }),
   function (req, res) {
-    // Successful authentication, redirect home.
-    // res.redirect("/");
-    console.log(req.user);
+    
     let token = generateToken(req.user);
-    res.status(200).send({msg:'logged in',token});
+    res.status(200).send({msg:'logged in',user:req.user,token});
   }
 );
 module.exports = app;

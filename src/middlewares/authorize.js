@@ -9,7 +9,6 @@ const authorize = (permittedRoles) => (req,res,next) => {
     })
 
     if(isPermitted){
-        
         return next();
     }
     else{

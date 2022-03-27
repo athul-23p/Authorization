@@ -4,6 +4,8 @@ const router = express.Router();
 const Product = require("../models/product.model");
 const autheticate = require("../middlewares/authenticate");
 const authorize = require("../middlewares/authorize");
+const prodChangeAuth = require('../middlewares/productChangeAuth');
+
 router.get("", async (req, res) => {
   try {
     const product = await Product.find();
@@ -27,6 +29,7 @@ router.patch(
   "/:id",
   autheticate,
   authorize(["admin", "seller"]),
+  prodChangeAuth,
   async (req, res) => {
     try {
       const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -47,6 +50,7 @@ router.delete(
   "/:id",
   autheticate,
   authorize(["admin", "seller"]),
+  prodChangeAuth,
   async (req, res) => {
     try {
       const product = await Product.findByIdAndDelete(req.params.id);
